@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  role="img"
+  aria-labelledby="title"
+>
+  <title>VS</title>
+  <rect width="64" height="64" fill="#ffffff" />
+  <text
+    x="50%"
+    y="53%"
+    fill="#171411"
+    font-family="'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif"
+    font-size="34"
+    font-weight="600"
+    letter-spacing="-1.2"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    VS
+  </text>
+</svg>
