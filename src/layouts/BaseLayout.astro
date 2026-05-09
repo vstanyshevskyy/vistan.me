@@ -1,0 +1,152 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+import navStyles from "../components/Nav.module.css";
+
+const {
+  title = site.name,
+  description = site.title,
+  currentPath = "/",
+} = Astro.props;
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "CV", href: "/cv" },
+];
+
+const themeScript = `
+  (() => {
+    const storageKey = "vistan-theme";
+    const root = document.documentElement;
+    const stored = localStorage.getItem(storageKey);
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+    const theme =
+      stored === "dark" || stored === "light" ? stored : systemTheme;
+
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+  })();
+`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script is:inline set:html={themeScript} />
+  </head>
+  <body>
+    <div
+      class="mx-auto flex min-h-screen max-w-3xl flex-col px-6 pt-8 pb-16 sm:px-10 sm:pt-10"
+    >
+      <header class={navStyles.header}>
+        <a class={navStyles.brand} href="/">{site.name}</a>
+        <div class={navStyles.controls}>
+          <nav aria-label="Primary">
+            <ul class={navStyles.navList}>
+              {
+                navItems.map((item) => (
+                  <li>
+                    <a
+                      class:list={[
+                        navStyles.navLink,
+                        currentPath === item.href && navStyles.navLinkActive,
+                      ]}
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <button
+            class={navStyles.themeButton}
+            type="button"
+            aria-label="Activate dark theme"
+            data-theme-toggle
+          >
+            <span class={navStyles.themeTrack} aria-hidden="true">
+              <span class:list={[navStyles.themeIcon, navStyles.themeSun]}>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path
+                    d="M12 2.5v2.5M12 19v2.5M21.5 12H19M5 12H2.5M18.7 5.3l-1.8 1.8M6.1 17.9l-1.8 1.8M18.7 18.7l-1.8-1.8M6.1 6.1 4.3 4.3"
+                  ></path>
+                </svg>
+              </span>
+              <span class:list={[navStyles.themeIcon, navStyles.themeMoon]}>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8a.75.75 0 0 0-.92-.92A9.75 9.75 0 1 0 21.14 16.32a.75.75 0 0 0-.94-.92Z"
+                  ></path>
+                </svg>
+              </span>
+              <span class={navStyles.themeThumb}></span>
+            </span>
+            <span class={navStyles.srOnly} data-theme-label>Dark theme</span>
+          </button>
+        </div>
+      </header>
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
+    <script is:inline>
+      const storageKey = "vistan-theme";
+      const root = document.documentElement;
+      const toggle = document.querySelector("[data-theme-toggle]");
+      const label = document.querySelector("[data-theme-label]");
+      const systemPreference = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
+
+      const applyTheme = (theme) => {
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+      };
+
+      const syncLabel = (theme) => {
+        if (!toggle) return;
+        toggle.setAttribute(
+          "aria-pressed",
+          theme === "dark" ? "true" : "false",
+        );
+        toggle.setAttribute(
+          "aria-label",
+          theme === "dark" ? "Activate light theme" : "Activate dark theme",
+        );
+        if (label) {
+          label.textContent = theme === "dark" ? "Light theme" : "Dark theme";
+        }
+      };
+
+      toggle?.addEventListener("click", () => {
+        const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem(storageKey, nextTheme);
+        syncLabel(nextTheme);
+      });
+
+      systemPreference.addEventListener("change", (event) => {
+        if (localStorage.getItem(storageKey)) return;
+        const theme = event.matches ? "dark" : "light";
+        applyTheme(theme);
+        syncLabel(theme);
+      });
+
+      syncLabel(root.dataset.theme === "dark" ? "dark" : "light");
+    </script>
+  </body>
+</html>

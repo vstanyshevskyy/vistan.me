@@ -1,0 +1,71 @@
+export const articles = [
+  {
+    title: "Web Accessibility: Step-by-Step Guide",
+    excerpt:
+      "A DOU article on practical web accessibility, covering keyboard navigation, semantics, ARIA, and accessible styling.",
+    href: "https://dou.ua/lenta/articles/web-accessibility/",
+    date: "DOU",
+  },
+  {
+    title: "48 E-F or Low Taxes in Denmark",
+    excerpt:
+      "A practical guide to Denmark's lower taxation scheme, who qualifies, and how to apply.",
+    href: "https://medium.com/@vitaliystanyshevskyy/48-e-f-or-low-taxes-in-denmark-4dbaff6c7ad0",
+    date: "Aug 16, 2023",
+  },
+  {
+    title: "Product owner for a weekend",
+    excerpt:
+      "Reflections from a charity hackathon and a short stretch acting as product owner.",
+    href: "https://medium.com/@vitaliystanyshevskyy/product-owner-for-a-weekend-a92eadb880f5",
+    date: "Apr 15, 2019",
+  },
+  {
+    title: "2018 Review",
+    excerpt:
+      "A year-in-review on blogging, conferences, certifications, and volunteering.",
+    href: "https://medium.com/@vitaliystanyshevskyy/2018-review-c1fd3f9823ab",
+    date: "Dec 27, 2018",
+  },
+  {
+    title: "Accessibility: Step-by-step Guide. Part 2",
+    excerpt:
+      "On semantics, content, ARIA, and styles in practical web accessibility.",
+    href: "https://medium.com/@vitaliystanyshevskyy/accessibility-step-by-step-guide-part-2-6ec2674f70ec",
+    date: "May 7, 2018",
+  },
+  {
+    title: "git push origin master -- force",
+    excerpt: "Three ways to recover when a force-push goes wrong.",
+    href: "https://medium.com/@vitaliystanyshevskyy/git-push-origin-master-force-eec683936622",
+    date: "May 2, 2018",
+  },
+  {
+    title: "Accessibility: Step-by-step Guide. Part 1",
+    excerpt:
+      "An introduction to web accessibility and the habits that make it real in product work.",
+    href: "https://medium.com/@vitaliystanyshevskyy/accessibility-step-by-step-guide-part-1-de12ab4d7e2b",
+    date: "Mar 29, 2018",
+  },
+  {
+    title: "Non Profit Crowdfunding or Web Development Volunteering",
+    excerpt: "A write-up based on the Uzhgorod Developer Meetup 11.0 talk.",
+    href: "https://medium.com/@vitaliystanyshevskyy/non-profit-crowdfunding-or-web-development-volunteering-49512ebf7710",
+    date: "Jan 5, 2018",
+  },
+];
+
+export const talks = [
+  {
+    title: "Accessibly about intimate",
+    excerpt: "LvivCSS 2019",
+  },
+  {
+    title: "Accessibility: We Need It Yesterday",
+    excerpt: "LvivCSS 2018",
+  },
+  {
+    title: "Web-development Volunteering",
+    excerpt: "Uzhgorod Developer Meetup 11.0",
+  },
+];

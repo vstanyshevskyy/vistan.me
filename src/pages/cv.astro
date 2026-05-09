@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import styles from "./_cv.module.css";
+---
+
+<BaseLayout
+  title={`${site.name} | CV`}
+  description={`CV and background for ${site.name}`}
+  currentPath="/cv"
+>
+  <section class={styles.section}>
+    <h1 class={styles.title}>{site.name}</h1>
+    <p class={styles.kicker}>
+      {site.role} · {site.location}
+    </p>
+    <p class={styles.body}>{site.intro}</p>
+    <div class={styles.links}>
+      <a class={styles.link} href={`mailto:${site.email}`}>{site.email}</a>
+      <span class={styles.meta}>{site.phone}</span>
+      {
+        site.socialLinks.map((link) => (
+          <a
+            class={styles.link}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Experience</h2>
+    <div class={styles.stack}>
+      {
+        site.experience.map((role) => (
+          <article class={styles.entry}>
+            <div class={styles.entryHeader}>
+              <h3 class={styles.entryTitle}>
+                {role.role} · {role.company}
+              </h3>
+              <p class={styles.meta}>
+                {role.period} · {role.meta}
+              </p>
+            </div>
+            <ul class={styles.bullets}>
+              {role.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Volunteering</h2>
+    <div class={styles.stack}>
+      {
+        site.volunteering.map((role) => (
+          <article class={styles.entry}>
+            <div class={styles.entryHeader}>
+              <h3 class={styles.entryTitle}>
+                {role.role} · {role.company}
+              </h3>
+              <p class={styles.meta}>
+                {role.period} · {role.meta}
+              </p>
+            </div>
+            <ul class={styles.bullets}>
+              {role.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Certifications</h2>
+    <ul class={styles.simpleList}>
+      {
+        site.certificates.map((certificate) => (
+          <li>
+            <a
+              class={styles.link}
+              href={certificate.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {certificate.title}
+            </a>
+            <span class={styles.meta}> · {certificate.meta}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Articles</h2>
+    <div class={styles.stack}>
+      {
+        site.articles.map((article) => (
+          <article class={styles.entry}>
+            <h3 class={styles.entryTitle}>
+              <a
+                class={styles.link}
+                href={article.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {article.title}
+              </a>
+            </h3>
+            <p class={styles.meta}>
+              {article.date} · {article.excerpt}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Skills</h2>
+    <ul class={styles.simpleList}>
+      {site.skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Technologies</h2>
+    <p class={styles.body}>{site.technologies.join(", ")}.</p>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Public speaking</h2>
+    <div class={styles.stack}>
+      {
+        site.talks.map((talk) => (
+          <article class={styles.entry}>
+            <h3 class={styles.entryTitle}>{talk.title}</h3>
+            <p class={styles.meta}>{talk.excerpt}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Education and languages</h2>
+    <p class={styles.body}>
+      {site.education.degree}, {site.education.year} · {
+        site.education.institution
+      }
+    </p>
+    <ul class={styles.simpleList}>
+      {site.languages.map((language) => <li>{language}</li>)}
+    </ul>
+  </section>
+</BaseLayout>

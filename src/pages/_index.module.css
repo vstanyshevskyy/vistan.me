@@ -1,0 +1,95 @@
+@reference "../styles/global.css";
+
+.hero {
+  @apply mb-16;
+}
+
+.greeting {
+  @apply mb-4 text-base text-[color:var(--accent)];
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+}
+
+.title {
+  @apply mb-5 text-4xl leading-tight font-semibold tracking-[-0.04em] sm:text-5xl;
+}
+
+.intro {
+  @apply max-w-2xl text-lg leading-8 text-[color:var(--text-muted)];
+}
+
+.availability {
+  @apply mt-5 max-w-2xl text-[0.95rem] leading-7 text-[color:var(--text-muted)];
+}
+
+.section {
+  @apply mb-14;
+}
+
+.sectionTitle {
+  @apply mb-5 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase;
+}
+
+.stack {
+  @apply flex flex-col gap-4;
+}
+
+.entry {
+  @apply border-b border-[color:var(--line)] pb-4;
+}
+
+.entryTitle {
+  @apply mb-1 text-xl leading-8 tracking-[-0.02em];
+}
+
+.entryLink {
+  @apply underline decoration-[color:var(--line)] underline-offset-4 transition-colors duration-200 hover:text-[color:var(--accent)];
+}
+
+.entryExcerpt {
+  @apply text-[color:var(--text-muted)];
+}
+
+.list {
+  @apply m-0 list-none p-0;
+}
+
+.listItem {
+  @apply border-b border-[color:var(--line)] py-3 text-[color:var(--text-main)];
+}
+
+.listMeta {
+  @apply text-[color:var(--text-muted)];
+}
+
+.socials {
+  @apply flex flex-wrap gap-x-5 gap-y-2;
+}
+
+.socialLink {
+  @apply text-[color:var(--text-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors duration-200 hover:text-[color:var(--accent)];
+}
+
+.socialMeta {
+  @apply text-[color:var(--text-muted)];
+}
+
+.form {
+  @apply flex flex-col gap-4;
+}
+
+.label {
+  @apply flex flex-col gap-2 text-sm text-[color:var(--text-muted)];
+}
+
+.input {
+  @apply rounded-none border border-[color:var(--line)] bg-[color:var(--surface)] px-4 py-3 text-base text-[color:var(--text-main)] transition-colors duration-200 outline-none placeholder:text-[color:var(--text-muted)] focus:border-[color:var(--accent)];
+}
+
+.textarea {
+  @apply min-h-36 resize-y;
+}
+
+.button {
+  @apply w-fit border border-[color:var(--text-main)] px-5 py-3 text-sm font-medium tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)];
+}

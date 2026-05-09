@@ -1,0 +1,57 @@
+@reference "../styles/global.css";
+
+.section {
+  @apply mb-12 max-w-2xl;
+}
+
+.title {
+  @apply mb-4 text-4xl leading-tight font-semibold tracking-[-0.04em];
+}
+
+.kicker {
+  @apply mb-4 text-sm tracking-[0.22em] text-[color:var(--text-muted)] uppercase;
+}
+
+.body {
+  @apply text-lg leading-8 text-[color:var(--text-muted)];
+}
+
+.sectionTitle {
+  @apply mb-5 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase;
+}
+
+.stack {
+  @apply flex flex-col gap-6;
+}
+
+.entry {
+  @apply border-b border-[color:var(--line)] pb-6;
+}
+
+.entryHeader {
+  @apply mb-3;
+}
+
+.entryTitle {
+  @apply mb-1 text-xl leading-8 tracking-[-0.02em];
+}
+
+.meta {
+  @apply text-sm text-[color:var(--text-muted)];
+}
+
+.bullets {
+  @apply m-0 flex list-disc flex-col gap-2 pl-5 text-[color:var(--text-muted)];
+}
+
+.simpleList {
+  @apply m-0 flex list-disc flex-col gap-2 pl-5 text-[color:var(--text-muted)];
+}
+
+.links {
+  @apply mt-6 flex flex-wrap gap-x-5 gap-y-2;
+}
+
+.link {
+  @apply text-[color:var(--text-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors duration-200 hover:text-[color:var(--accent)];
+}
