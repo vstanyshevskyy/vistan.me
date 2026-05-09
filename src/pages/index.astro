@@ -2,6 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
 import styles from "./_index.module.css";
+
+const subnavItems = [
+  { label: "Summary", href: "#summary-title" },
+  { label: "Impact", href: "#highlights-title" },
+  { label: "Articles", href: "#articles-title" },
+  { label: "Speaking", href: "#speaking-title" },
+  { label: "Certificates", href: "#certificates-title" },
+];
 ---
 
 <BaseLayout
@@ -10,11 +18,28 @@ import styles from "./_index.module.css";
   currentPath="/"
 >
   <section class={styles.hero}>
-    <p class={styles.greeting}>{site.role}</p>
+    <p class={styles.greeting}>{site.greeting}</p>
     <h1 class={styles.title}>{site.title}</h1>
     <p class={styles.intro}>{site.intro}</p>
     <p class={styles.availability}>{site.availability}</p>
   </section>
+
+  <nav class={styles.subnav} aria-label="Home sections">
+    <div class={styles.subnavGroup}>
+      <p class={styles.subnavLabel}>On this page</p>
+      <ul class={styles.subnavList}>
+        {
+          subnavItems.map((item) => (
+            <li>
+              <a class={styles.subnavLink} href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
 
   <section class={styles.section} aria-labelledby="summary-title">
     <h2 class={styles.sectionTitle} id="summary-title">Summary</h2>
@@ -59,31 +84,22 @@ import styles from "./_index.module.css";
     </div>
   </section>
 
-  <section class={styles.section} aria-labelledby="experience-title">
-    <h2 class={styles.sectionTitle} id="experience-title">Recent experience</h2>
-    <div class={styles.stack}>
-      {
-        site.experience.slice(0, 3).map((role) => (
-          <article class={styles.entry}>
-            <h3 class={styles.entryTitle}>
-              {role.role} · {role.company}
-            </h3>
-            <p class={styles.entryExcerpt}>
-              {role.period} · {role.meta}
-            </p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
   <section class={styles.section} aria-labelledby="speaking-title">
     <h2 class={styles.sectionTitle} id="speaking-title">Public speaking</h2>
     <div class={styles.stack}>
       {
         site.talks.map((talk) => (
           <article class={styles.entry}>
-            <h3 class={styles.entryTitle}>{talk.title}</h3>
+            <h3 class={styles.entryTitle}>
+              <a
+                class={styles.entryLink}
+                href={talk.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {talk.title}
+              </a>
+            </h3>
             <p class={styles.entryExcerpt}>{talk.excerpt}</p>
           </article>
         ))
@@ -132,45 +148,4 @@ import styles from "./_index.module.css";
     </div>
   </section>
 
-  <section class={styles.section} aria-labelledby="contact-title">
-    <h2 class={styles.sectionTitle} id="contact-title">Contact</h2>
-    <form
-      class={styles.form}
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="bot-field" />
-      <label class={styles.label}>
-        Name
-        <input
-          class={styles.input}
-          type="text"
-          name="name"
-          autocomplete="name"
-          required
-        />
-      </label>
-      <label class={styles.label}>
-        Email
-        <input
-          class={styles.input}
-          type="email"
-          name="email"
-          autocomplete="email"
-          required
-        />
-      </label>
-      <label class={styles.label}>
-        Message
-        <textarea
-          class:list={[styles.input, styles.textarea]}
-          name="message"
-          required></textarea>
-      </label>
-      <button class={styles.button} type="submit">Send message</button>
-    </form>
-  </section>
 </BaseLayout>

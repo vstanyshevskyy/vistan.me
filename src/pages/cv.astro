@@ -17,7 +17,6 @@ import styles from "./_cv.module.css";
     <p class={styles.body}>{site.intro}</p>
     <div class={styles.links}>
       <a class={styles.link} href={`mailto:${site.email}`}>{site.email}</a>
-      <span class={styles.meta}>{site.phone}</span>
       {
         site.socialLinks.map((link) => (
           <a
@@ -105,31 +104,6 @@ import styles from "./_cv.module.css";
   </section>
 
   <section class={styles.section}>
-    <h2 class={styles.sectionTitle}>Articles</h2>
-    <div class={styles.stack}>
-      {
-        site.articles.map((article) => (
-          <article class={styles.entry}>
-            <h3 class={styles.entryTitle}>
-              <a
-                class={styles.link}
-                href={article.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {article.title}
-              </a>
-            </h3>
-            <p class={styles.meta}>
-              {article.date} · {article.excerpt}
-            </p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class={styles.section}>
     <h2 class={styles.sectionTitle}>Skills</h2>
     <ul class={styles.simpleList}>
       {site.skills.map((skill) => <li>{skill}</li>)}
@@ -142,26 +116,16 @@ import styles from "./_cv.module.css";
   </section>
 
   <section class={styles.section}>
-    <h2 class={styles.sectionTitle}>Public speaking</h2>
-    <div class={styles.stack}>
-      {
-        site.talks.map((talk) => (
-          <article class={styles.entry}>
-            <h3 class={styles.entryTitle}>{talk.title}</h3>
-            <p class={styles.meta}>{talk.excerpt}</p>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class={styles.section}>
-    <h2 class={styles.sectionTitle}>Education and languages</h2>
+    <h2 class={styles.sectionTitle}>Education</h2>
     <p class={styles.body}>
       {site.education.degree}, {site.education.year} · {
         site.education.institution
       }
     </p>
+  </section>
+
+  <section class={styles.section}>
+    <h2 class={styles.sectionTitle}>Languages</h2>
     <ul class={styles.simpleList}>
       {site.languages.map((language) => <li>{language}</li>)}
     </ul>

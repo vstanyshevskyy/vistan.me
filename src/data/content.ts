@@ -1,17 +1,17 @@
 export const articles = [
   {
-    title: "Web Accessibility: Step-by-Step Guide",
-    excerpt:
-      "A DOU article on practical web accessibility, covering keyboard navigation, semantics, ARIA, and accessible styling.",
-    href: "https://dou.ua/lenta/articles/web-accessibility/",
-    date: "DOU",
-  },
-  {
     title: "48 E-F or Low Taxes in Denmark",
     excerpt:
       "A practical guide to Denmark's lower taxation scheme, who qualifies, and how to apply.",
     href: "https://medium.com/@vitaliystanyshevskyy/48-e-f-or-low-taxes-in-denmark-4dbaff6c7ad0",
     date: "Aug 16, 2023",
+  },
+  {
+    title: "Web Accessibility: Step-by-Step Guide",
+    excerpt:
+      "A DOU article on practical web accessibility, covering keyboard navigation, semantics, ARIA, and accessible styling.",
+    href: "https://dou.ua/lenta/articles/web-accessibility/",
+    date: "Dec 12, 2019",
   },
   {
     title: "Product owner for a weekend",
@@ -59,13 +59,22 @@ export const talks = [
   {
     title: "Accessibly about intimate",
     excerpt: "LvivCSS 2019",
+    href: "https://docs.google.com/presentation/d/1FLN-ia0jLiRUWD2kJxud6OkjwF-1mM-Ve8XR1q-fbYM/edit?usp=sharing",
+  },
+  {
+    title:
+      "Web Development Volunteering. How to overcome the burn-out and keep growing as a professional",
+    excerpt: "Whitespectre Team Camp 2019",
+    href: "https://docs.google.com/presentation/d/196chB1MwjCXo6i8HG7S5qVLymRGmE5uw6WdbS7jNTJU/edit?usp=sharing",
   },
   {
     title: "Accessibility: We Need It Yesterday",
     excerpt: "LvivCSS 2018",
+    href: "https://docs.google.com/presentation/d/1CA6fvirtXX0LglVVm2cudjZ0mAOsa7I9CzBdqbR1I0M/edit?usp=drive_link",
   },
   {
-    title: "Web-development Volunteering",
+    title: "NonProfit Crowdfunding or Web development Volunteering",
     excerpt: "Uzhgorod Developer Meetup 11.0",
+    href: "https://docs.google.com/presentation/d/19BeA3MAcE6BlJEdDwqvxHWF34lbbWgFjBS-Xtrp7R6E/edit?usp=sharing",
   },
 ];

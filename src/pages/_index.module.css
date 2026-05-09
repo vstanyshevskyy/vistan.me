@@ -1,33 +1,53 @@
 @reference "../styles/global.css";
 
 .hero {
-  @apply mb-16;
+  @apply mb-12 sm:mb-16;
 }
 
 .greeting {
-  @apply mb-4 text-base text-[color:var(--accent)];
+  @apply mb-3 text-sm text-[color:var(--accent)] sm:mb-4 sm:text-base;
   font-family: "Georgia", "Times New Roman", serif;
   font-style: italic;
 }
 
 .title {
-  @apply mb-5 text-4xl leading-tight font-semibold tracking-[-0.04em] sm:text-5xl;
+  @apply mb-4 text-[2rem] leading-tight font-semibold tracking-[-0.04em] sm:mb-5 sm:text-5xl;
 }
 
 .intro {
-  @apply max-w-2xl text-lg leading-8 text-[color:var(--text-muted)];
+  @apply max-w-2xl text-base leading-7 text-[color:var(--text-muted)] sm:text-lg sm:leading-8;
 }
 
 .availability {
-  @apply mt-5 max-w-2xl text-[0.95rem] leading-7 text-[color:var(--text-muted)];
+  @apply mt-4 max-w-2xl text-sm leading-6 text-[color:var(--text-muted)] sm:mt-5 sm:text-[0.95rem] sm:leading-7;
+}
+
+.subnav {
+  @apply mb-12 border-y border-[color:var(--line)] py-4 sm:mb-14;
+}
+
+.subnavGroup {
+  @apply sm:flex sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2;
+}
+
+.subnavLabel {
+  @apply mb-3 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase sm:hidden;
+}
+
+.subnavList {
+  @apply m-0 flex list-none flex-col gap-3 p-0 text-[0.95rem] text-[color:var(--text-muted)] sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2 sm:text-sm;
+}
+
+.subnavLink {
+  @apply block underline decoration-transparent underline-offset-4 transition-colors duration-200 hover:text-[color:var(--text-main)] hover:decoration-[color:var(--accent)];
 }
 
 .section {
-  @apply mb-14;
+  @apply mb-12 sm:mb-14;
 }
 
 .sectionTitle {
-  @apply mb-5 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase;
+  @apply mb-4 scroll-mt-24 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase sm:mb-5;
 }
 
 .stack {
@@ -39,7 +59,7 @@
 }
 
 .entryTitle {
-  @apply mb-1 text-xl leading-8 tracking-[-0.02em];
+  @apply mb-1 text-lg leading-7 tracking-[-0.02em] sm:text-xl sm:leading-8;
 }
 
 .entryLink {
@@ -48,6 +68,7 @@
 
 .entryExcerpt {
   @apply text-[color:var(--text-muted)];
+  overflow-wrap: anywhere;
 }
 
 .list {
@@ -63,11 +84,12 @@
 }
 
 .socials {
-  @apply flex flex-wrap gap-x-5 gap-y-2;
+  @apply flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-5;
 }
 
 .socialLink {
   @apply text-[color:var(--text-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors duration-200 hover:text-[color:var(--accent)];
+  overflow-wrap: anywhere;
 }
 
 .socialMeta {
@@ -91,5 +113,5 @@
 }
 
 .button {
-  @apply w-fit border border-[color:var(--text-main)] px-5 py-3 text-sm font-medium tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)];
+  @apply w-full border border-[color:var(--text-main)] px-5 py-3 text-sm font-medium tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] sm:w-fit;
 }

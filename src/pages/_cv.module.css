@@ -1,11 +1,11 @@
 @reference "../styles/global.css";
 
 .section {
-  @apply mb-12 max-w-2xl;
+  @apply mb-10 max-w-2xl sm:mb-12;
 }
 
 .title {
-  @apply mb-4 text-4xl leading-tight font-semibold tracking-[-0.04em];
+  @apply mb-4 text-[2rem] leading-tight font-semibold tracking-[-0.04em] sm:text-4xl;
 }
 
 .kicker {
@@ -13,11 +13,11 @@
 }
 
 .body {
-  @apply text-lg leading-8 text-[color:var(--text-muted)];
+  @apply text-base leading-7 text-[color:var(--text-muted)] sm:text-lg sm:leading-8;
 }
 
 .sectionTitle {
-  @apply mb-5 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase;
+  @apply mb-4 text-xs tracking-[0.22em] text-[color:var(--text-muted)] uppercase sm:mb-5;
 }
 
 .stack {
@@ -33,11 +33,12 @@
 }
 
 .entryTitle {
-  @apply mb-1 text-xl leading-8 tracking-[-0.02em];
+  @apply mb-1 text-lg leading-7 tracking-[-0.02em] sm:text-xl sm:leading-8;
 }
 
 .meta {
   @apply text-sm text-[color:var(--text-muted)];
+  overflow-wrap: anywhere;
 }
 
 .bullets {
@@ -49,9 +50,10 @@
 }
 
 .links {
-  @apply mt-6 flex flex-wrap gap-x-5 gap-y-2;
+  @apply mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2;
 }
 
 .link {
   @apply text-[color:var(--text-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors duration-200 hover:text-[color:var(--accent)];
+  overflow-wrap: anywhere;
 }

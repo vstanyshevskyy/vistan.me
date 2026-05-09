@@ -14,6 +14,9 @@ const navItems = [
   { label: "CV", href: "/cv" },
 ];
 
+const linkedIn = site.socialLinks.find((link) => link.label === "LinkedIn");
+const currentYear = new Date().getFullYear();
+
 const themeScript = `
   (() => {
     const storageKey = "vistan-theme";
@@ -42,7 +45,7 @@ const themeScript = `
   </head>
   <body>
     <div
-      class="mx-auto flex min-h-screen max-w-3xl flex-col px-6 pt-8 pb-16 sm:px-10 sm:pt-10"
+      class="mx-auto flex min-h-screen max-w-3xl flex-col px-4 pt-6 pb-14 sm:px-10 sm:pt-10 sm:pb-16"
     >
       <header class={navStyles.header}>
         <a class={navStyles.brand} href="/">{site.name}</a>
@@ -64,6 +67,23 @@ const themeScript = `
                   </li>
                 ))
               }
+              {linkedIn && (
+                <li>
+                  <a
+                    class={navStyles.navLink}
+                    href={linkedIn.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              )}
+              <li>
+                <a class={navStyles.navLink} href={`mailto:${site.email}`}>
+                  Email
+                </a>
+              </li>
             </ul>
           </nav>
           <button
@@ -72,6 +92,22 @@ const themeScript = `
             aria-label="Activate dark theme"
             data-theme-toggle
           >
+            <span class={navStyles.themeMobile} aria-hidden="true">
+              <span class:list={[navStyles.themeMobileIcon, navStyles.themeSun]}>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path
+                    d="M12 2.5v2.5M12 19v2.5M21.5 12H19M5 12H2.5M18.7 5.3l-1.8 1.8M6.1 17.9l-1.8 1.8M18.7 18.7l-1.8-1.8M6.1 6.1 4.3 4.3"
+                  ></path>
+                </svg>
+              </span>
+              <span class={navStyles.themeMobileText} data-theme-text>Dark</span>
+            </span>
             <span class={navStyles.themeTrack} aria-hidden="true">
               <span class:list={[navStyles.themeIcon, navStyles.themeSun]}>
                 <svg
@@ -102,12 +138,19 @@ const themeScript = `
       <main class="flex-1">
         <slot />
       </main>
+      <footer class={navStyles.footer}>
+        <p class={navStyles.footerText}>
+          {site.name} · {site.location}
+        </p>
+        <p class={navStyles.footerText}>© {currentYear}</p>
+      </footer>
     </div>
     <script is:inline>
       const storageKey = "vistan-theme";
       const root = document.documentElement;
       const toggle = document.querySelector("[data-theme-toggle]");
       const label = document.querySelector("[data-theme-label]");
+      const themeText = document.querySelector("[data-theme-text]");
       const systemPreference = window.matchMedia(
         "(prefers-color-scheme: dark)",
       );
@@ -129,6 +172,9 @@ const themeScript = `
         );
         if (label) {
           label.textContent = theme === "dark" ? "Light theme" : "Dark theme";
+        }
+        if (themeText) {
+          themeText.textContent = theme === "dark" ? "Light" : "Dark";
         }
       };
 

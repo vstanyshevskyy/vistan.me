@@ -61,7 +61,7 @@ export const experience = [
     ],
   },
   {
-    role: "Technical Lead",
+    role: "Senior Engineer",
     company: "JustAnswer LLC",
     meta: "Ukraine",
     period: "Jun 2013 - Apr 2017",
