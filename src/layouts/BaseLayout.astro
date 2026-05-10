@@ -7,6 +7,8 @@ const {
   title = site.name,
   description = site.title,
   currentPath = "/",
+  image = "/og-image.png",
+  type = "website",
 } = Astro.props;
 
 const navItems = [
@@ -16,6 +18,51 @@ const navItems = [
 
 const linkedIn = site.socialLinks.find((link) => link.label === "LinkedIn");
 const currentYear = new Date().getFullYear();
+const siteOrigin = Astro.site ?? new URL("https://vistan.me");
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const socialImageURL = new URL(image, siteOrigin);
+const socialImageType = image.endsWith(".png") ? "image/png" : "image/svg+xml";
+const socialLinks = site.socialLinks.map((link) => link.href);
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    url: siteOrigin.href,
+    description: site.title,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.name,
+    jobTitle: site.role,
+    description: site.intro,
+    url: siteOrigin.href,
+    email: `mailto:${site.email}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Copenhagen",
+      addressCountry: "DK",
+    },
+    sameAs: socialLinks,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: canonicalURL.href,
+    isPartOf: {
+      "@type": "WebSite",
+      name: site.name,
+      url: siteOrigin.href,
+    },
+    about: {
+      "@type": "Person",
+      name: site.name,
+    },
+  },
+];
 
 const themeScript = `
   (() => {
@@ -41,7 +88,34 @@ const themeScript = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:type" content={socialImageType} />
+    <meta
+      property="og:image:alt"
+      content={`${site.name} — engineering manager and product engineering lead`}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta
+      name="twitter:image:alt"
+      content={`${site.name} — engineering manager and product engineering lead`}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
     <script is:inline set:html={themeScript} />
   </head>
   <body>
