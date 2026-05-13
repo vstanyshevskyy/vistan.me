@@ -1,4 +1,4 @@
-import { articles, talks } from "./content";
+import { articles, projects, talks } from "./content";
 import {
   certificates,
   education,
@@ -13,6 +13,7 @@ export const site = {
   ...profile,
   experience,
   articles,
+  projects,
   talks,
   volunteering,
   certificates,

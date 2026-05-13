@@ -78,3 +78,33 @@ export const talks = [
     href: "https://docs.google.com/presentation/d/19BeA3MAcE6BlJEdDwqvxHWF34lbbWgFjBS-Xtrp7R6E/edit?usp=sharing",
   },
 ];
+
+export const projects = [
+  {
+    title: "Bobruiko.com",
+    href: "https://www.bobruiko.com/en/",
+    period: "2019-now",
+    stack: "Gatsby.js, React",
+    excerpt:
+      "Mental health education platform and therapist website built with Gatsby.js.",
+    image: "/projects/bobruiko.jpeg",
+  },
+  {
+    title: "Vpershe.com",
+    href: "https://vpershe.com",
+    period: "2018-2022",
+    stack: "Gatsby.js",
+    excerpt:
+      "Public educational platform for Ukrainian teenagers. Supported growth from launch to 53K monthly visitors in 14 months.",
+    image: "/projects/vpershe.jpeg",
+  },
+  {
+    title: "Motix.com.ua",
+    href: "https://motix.com.ua",
+    period: "2011-2013",
+    stack: "Backbone.js, jQuery, PHP, MySQL",
+    excerpt:
+      "A web app for managing and synchronizing user bookmarks, reaching 1000+ active daily users in 2013.",
+    image: "/projects/motix.jpeg",
+  },
+];

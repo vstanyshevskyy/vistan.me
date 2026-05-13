@@ -83,6 +83,99 @@
   @apply text-[color:var(--text-muted)];
 }
 
+.projectGrid {
+  @apply grid gap-4;
+}
+
+.projectCard {
+  @apply overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface)] sm:grid sm:grid-cols-[minmax(0,1.05fr)_minmax(0,1.4fr)];
+}
+
+.projectMedia {
+  @apply relative flex min-h-48 items-center justify-center overflow-hidden border-b border-[color:var(--line)] bg-[color:var(--surface)] p-4 sm:min-h-full sm:border-r sm:border-b-0 sm:p-5;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 253, 248, 0.68) 58%,
+      rgba(244, 239, 229, 0.82)
+    );
+}
+
+.projectMedia::after {
+  content: "";
+  @apply absolute inset-0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 253, 248, 0.06),
+      rgba(255, 253, 248, 0.14)
+    );
+}
+
+:global([data-theme="dark"]) .projectMedia {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(30, 52, 84, 0.92),
+      rgba(18, 35, 60, 0.82) 58%,
+      rgba(13, 27, 47, 0.94)
+    );
+}
+
+:global([data-theme="dark"]) .projectMedia::after {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(18, 35, 60, 0.08),
+      rgba(18, 35, 60, 0.16)
+    );
+}
+
+.projectImage {
+  @apply relative z-[1] block max-h-[17rem] max-w-full object-contain sm:max-h-[18rem];
+  filter: grayscale(100%) sepia(18%) saturate(32%) contrast(0.88)
+    brightness(1.01);
+  transform: scale(1);
+  transition:
+    filter 220ms ease,
+    transform 220ms ease;
+}
+
+:global([data-theme="dark"]) .projectImage {
+  filter: grayscale(100%) sepia(12%) saturate(42%) contrast(0.86)
+    brightness(0.92);
+}
+
+.projectInner {
+  @apply flex min-h-56 flex-col justify-end gap-3 px-5 py-5 sm:min-h-64 sm:px-6 sm:py-6;
+}
+
+.projectMeta {
+  @apply m-0 text-xs tracking-[0.18em] text-[color:var(--text-muted)] uppercase;
+}
+
+.projectTitle {
+  @apply m-0 text-xl leading-8 tracking-[-0.03em] sm:text-[1.7rem] sm:leading-10;
+}
+
+.projectLink {
+  @apply no-underline;
+}
+
+.projectExcerpt {
+  @apply m-0 max-w-[34rem] text-[color:var(--text-muted)];
+}
+
+.projectCard:hover .projectLink {
+  color: var(--accent);
+}
+
+.projectCard:hover .projectImage {
+  filter: grayscale(0%) saturate(100%) contrast(1) brightness(1);
+  transform: scale(1.015);
+}
+
 .socials {
   @apply flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-5;
 }

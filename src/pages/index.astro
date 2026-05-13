@@ -9,6 +9,7 @@ const subnavItems = [
   { label: "Articles", href: "#articles-title" },
   { label: "Speaking", href: "#speaking-title" },
   { label: "Certificates", href: "#certificates-title" },
+  { label: "Side Projects", href: "#projects-title" },
 ];
 ---
 
@@ -127,6 +128,42 @@ const subnavItems = [
         ))
       }
     </ul>
+  </section>
+
+  <section class={styles.section} aria-labelledby="projects-title">
+    <h2 class={styles.sectionTitle} id="projects-title">Side Projects</h2>
+    <div class={styles.projectGrid}>
+      {
+        site.projects.map((project) => (
+          <article class={styles.projectCard}>
+            <div class={styles.projectMedia}>
+              <img
+                class={styles.projectImage}
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                loading="lazy"
+              />
+            </div>
+            <div class={styles.projectInner}>
+              <p class={styles.projectMeta}>
+                {project.period} · {project.stack}
+              </p>
+              <h3 class={styles.projectTitle}>
+                <a
+                  class={styles.projectLink}
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {project.title}
+                </a>
+              </h3>
+              <p class={styles.projectExcerpt}>{project.excerpt}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </section>
 
   <section class={styles.section} aria-labelledby="socials-title">
